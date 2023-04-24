@@ -42,7 +42,7 @@ public class HashTable<K, V> {
             return null;
         } else {
             Node<K, V> current = table[index];
-            while (current.getNext() != null) {
+            while (current != null) {
                 if (current.getKey().equals(key)) {
                     return current.getValue();
                 }
