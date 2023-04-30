@@ -2,11 +2,11 @@ package model;
 
 
 public class People {
-    private String name;
+    private long cedula;
     private String ticket;
 
     //Es primera clase?
-    private Boolean first_class;
+    private int first_class;
 
     //Hora de llegada
     private String arrival_time;
@@ -15,10 +15,10 @@ public class People {
     private int miles_earned;
 
     //Requiere atencion especial?
-    private boolean special_attention;
+    private int special_attention;
 
     //Es de la tercera edad?
-    private boolean elderly;
+    private int elderly;
 
 
     //Datos añadidos:
@@ -30,15 +30,15 @@ public class People {
     private int membership_level;
 
     //Necesita atencion medica?
-    private boolean medical_care;
+    private int medical_care;
 
-    public People(String name, String ticket, Boolean first_class) {
-        this.name = name;
+    public People(long cedula, String ticket, int first_class) {
+        this.cedula = cedula;
         this.ticket = ticket;
         this.first_class = first_class;
     }
 
-    public void setFirstClassData(int miles_earned, boolean special_attention, boolean elderly, int number_of_suitcases, int membership_level, boolean medical_care) {
+    public void setFirstClassData(int miles_earned, int special_attention, int elderly, int number_of_suitcases, int membership_level, int medical_care) {
         this.miles_earned = miles_earned;
         this.special_attention = special_attention;
         this.elderly = elderly;
@@ -47,12 +47,12 @@ public class People {
         this.medical_care = medical_care;
     }
 
-    public String getName() {
-        return name;
+    public long getCedula() {
+        return cedula;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCedula(long cedula) {
+        this.cedula = cedula;
     }
 
     public String getTicket() {
@@ -63,11 +63,11 @@ public class People {
         this.ticket = ticket;
     }
 
-    public Boolean getFirst_class() {
+    public int getFirst_class() {
         return first_class;
     }
 
-    public void setFirst_class(Boolean first_class) {
+    public void setFirst_class(int first_class) {
         this.first_class = first_class;
     }
 
@@ -87,19 +87,19 @@ public class People {
         this.miles_earned = miles_earned;
     }
 
-    public boolean isSpecial_attention() {
+    public int isSpecial_attention() {
         return special_attention;
     }
 
-    public void setSpecial_attention(boolean special_attention) {
+    public void setSpecial_attention(int special_attention) {
         this.special_attention = special_attention;
     }
 
-    public boolean isElderly() {
+    public int isElderly() {
         return elderly;
     }
 
-    public void setElderly(boolean elderly) {
+    public void setElderly(int elderly) {
         this.elderly = elderly;
     }
 
@@ -119,11 +119,11 @@ public class People {
         this.membership_level = membership_level;
     }
 
-    public boolean isMedical_care() {
+    public int isMedical_care() {
         return medical_care;
     }
 
-    public void setMedical_care(boolean medical_care) {
+    public void setMedical_care(int medical_care) {
         this.medical_care = medical_care;
     }
 }
