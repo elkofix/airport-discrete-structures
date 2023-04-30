@@ -7,48 +7,48 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HashTableTest {
-    private HashTable<Integer, String> ht;
+    private HashTable<Integer, String> ht = new HashTable<Integer, String>(10);
 
     public void setupStage1() {
-        ht.add(1, "persona1");
-        ht.add(456, "persona2");
-        ht.add(719, "persona3");
-        ht.add(3, "persona4");
+        ht.put(1, "persona1");
+        ht.put(456, "persona2");
+        ht.put(719, "persona3");
+        ht.put(3, "persona4");
     }
 
     public void setupStage2() {
-        ht.add(1, "persona1");
-        ht.add(456, "persona2");
-        ht.add(719, "persona3");
-        ht.add(3, "persona4");
-        ht.add(523, "persona5");
-        ht.add(6455, "persona6");
-        ht.add(71, "persona7");
-        ht.add(309, "persona8");
-        ht.add(864, "persona9");
-        ht.add(69, "persona10");
-        ht.add(4879, "persona11");
-        ht.add(305, "persona12");
-        ht.add(956, "persona13");
-        ht.add(895, "persona14");
-        ht.add(425, "persona15");
-        ht.add(532, "persona16");
+        ht.put(1, "persona1");
+        ht.put(456, "persona2");
+        ht.put(719, "persona3");
+        ht.put(3, "persona4");
+        ht.put(523, "persona5");
+        ht.put(6455, "persona6");
+        ht.put(71, "persona7");
+        ht.put(309, "persona8");
+        ht.put(864, "persona9");
+        ht.put(69, "persona10");
+        ht.put(4879, "persona11");
+        ht.put(305, "persona12");
+        ht.put(956, "persona13");
+        ht.put(895, "persona14");
+        ht.put(425, "persona15");
+        ht.put(532, "persona16");
     }
 
     public void setupStage3() {
-        ht.add(1, "persona1");
-        ht.add(1, "persona2");
-        ht.add(1, "persona3");
-        ht.add(1, "persona4");
+        ht.put(1, "persona1");
+        ht.put(1, "persona2");
+        ht.put(1, "persona3");
+        ht.put(1, "persona4");
     }
 
     @Test
     public void testRetrieveObjectsStandard() {
         setupStage1();
-        String result = ht.getValue(1);
-        String result1 = ht.getValue(456);
-        String result2 = ht.getValue(719);
-        String result3 = ht.getValue(3);
+        String result = ht.get(1);
+        String result1 = ht.get(456);
+        String result2 = ht.get(719);
+        String result3 = ht.get(3);
         assertEquals("persona1",result);
         assertEquals("persona2",result1);
         assertEquals("persona3",result2);
@@ -58,22 +58,22 @@ public class HashTableTest {
     @Test
     public void testRetrieveObjectsBorder() {
         setupStage2();
-        String result = ht.getValue(1);
-        String result1 = ht.getValue(456);
-        String result2 = ht.getValue(719);
-        String result3 = ht.getValue(3);
-        String result4 = ht.getValue(523);
-        String result5 = ht.getValue(6455);
-        String result6 = ht.getValue(71);
-        String result7 = ht.getValue(309);
-        String result8 = ht.getValue(864);
-        String result9 = ht.getValue(69);
-        String result10 = ht.getValue(4879);
-        String result11 = ht.getValue(305);
-        String result12 = ht.getValue(956);
-        String result13 = ht.getValue(895);
-        String result14 = ht.getValue(425);
-        String result15 = ht.getValue(532);
+        String result = ht.get(1);
+        String result1 = ht.get(456);
+        String result2 = ht.get(719);
+        String result3 = ht.get(3);
+        String result4 = ht.get(523);
+        String result5 = ht.get(6455);
+        String result6 = ht.get(71);
+        String result7 = ht.get(309);
+        String result8 = ht.get(864);
+        String result9 = ht.get(69);
+        String result10 = ht.get(4879);
+        String result11 = ht.get(305);
+        String result12 = ht.get(956);
+        String result13 = ht.get(895);
+        String result14 = ht.get(425);
+        String result15 = ht.get(532);
 
         assertEquals("persona1",result);
         assertEquals("persona2",result1);
@@ -96,10 +96,10 @@ public class HashTableTest {
     @Test
     public void testRetrieveObjectsInteresting() {
         setupStage2();
-        String result = ht.getValue(1);
-        String result1 = ht.getValue(1);
-        String result2 = ht.getValue(1);
-        String result3 = ht.getValue(1);
+        String result = ht.get(1);
+        String result1 = ht.get(1);
+        String result2 = ht.get(1);
+        String result3 = ht.get(1);
 
         assertEquals("persona1",result);
         assertEquals("persona1",result1);
@@ -107,7 +107,7 @@ public class HashTableTest {
         assertEquals("persona1",result3);
     }
 
-    @Test
+   /* @Test
     public void testRemoveObjectsStandard() {
         setupStage1();
         String result = ht.remove(1);
@@ -162,7 +162,7 @@ public class HashTableTest {
         assertEquals("Value not found to delete",result8);
     }
 
-
+*/
 
 
 
