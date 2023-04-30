@@ -16,6 +16,7 @@ public class Passenger implements Comparable<Passenger> {
     private int number_of_suitcases;
     private int membership_level;
     private int medical_care;
+    private double total_priority;
 
     public Passenger(People people) {
         this.cedula = people.getCedula();
@@ -81,95 +82,37 @@ public class Passenger implements Comparable<Passenger> {
 
     @Override
     public int compareTo(Passenger other) {
-        int result;
 
-        if(first_class == 1){
-            int milesComparison = Integer.compare(this.miles_earned, other.miles_earned);
-            if (milesComparison != 0) {
-                return milesComparison;
-            }
+        int section_ticket = Integer.parseInt(this.ticket.substring(1));
 
-            // Luego comparamos por atención especial
-            int attentionComparison = Integer.compare(this.special_attention, other.special_attention);
-            if (attentionComparison != 0) {
-                return attentionComparison;
-            }
-
-            // Luego comparamos por edad avanzada
-            int elderlyComparison = Integer.compare(this.elderly, other.elderly);
-            if (elderlyComparison != 0) {
-                return elderlyComparison;
-            }
-
-            // Luego comparamos por cantidad de maletas
-            int suitcaseComparison = Integer.compare(this.number_of_suitcases, other.number_of_suitcases);
-            if (suitcaseComparison != 0) {
-                return suitcaseComparison;
-            }
-
-            // Luego comparamos por nivel de membresía
-            int membershipComparison = Integer.compare(this.membership_level, other.membership_level);
-            if (membershipComparison != 0) {
-                return membershipComparison;
-            }
-
-            // Luego comparamos por atención médica
-            int medicalComparison = Integer.compare(this.medical_care, other.medical_care);
-            if (medicalComparison != 0) {
-                return medicalComparison;
-            }
-
-            // Finalmente comparamos por el ticket
-            int ticketComparison = this.ticket.compareTo(other.ticket);
-            if (ticketComparison != 0) {
-                return ticketComparison;
-            }
-
-        }
-
+        int other_section_ticket = Integer.parseInt(other.ticket.substring(1));
         //Comparar por tiempo
 
         LocalTime hour = LocalTime.parse(arrival_time);
-        int time = hour.toSecondOfDay();
+        double time = ((double) 1000 / hour.toSecondOfDay());
+
 
         LocalTime otherHour = LocalTime.parse(other.arrival_time);
-        int otherTime = otherHour.toSecondOfDay();
+        double otherTime = ((double) 1000 / otherHour.toSecondOfDay());
 
-        result = Integer.compare(time, otherTime);
-        if (result != 0) {
-            return result;
+
+        this.total_priority =  (time*1000) + (section_ticket * 2000) + (this.first_class * 1000) + (this.miles_earned * 10) + (this.special_attention * 1000) + (this.elderly * 1000) + (this.number_of_suitcases * 5) + (this.membership_level * 500) + (this.medical_care * 1000);
+
+        double otherTotalPriority = (otherTime*1000) + (other_section_ticket * 2000) + (other.first_class * 1000) + (other.miles_earned * 10) + (other.special_attention * 1000) + (other.elderly * 1000) + (other.number_of_suitcases * 5) + (other.membership_level * 500) + (other.medical_care * 1000);
+
+
+        int totalPriorityComparison = Double.compare(this.total_priority, otherTotalPriority);
+
+        if (totalPriorityComparison != 0) {
+            return totalPriorityComparison;
+        }else {
+            return 0;
         }
-
-        // Si las horas de llegada son iguales, comparamos por la letra de la fila del ticket
-        String thisRowLetter = this.ticket.substring(0, 1);
-        String otherRowLetter = other.ticket.substring(0, 1);
-        int rowLetterComparison = thisRowLetter.compareTo(otherRowLetter);
-        if (rowLetterComparison != 0) {
-            return rowLetterComparison;
-        }
-
-        // Si las letras de la fila son iguales, comparamos por el número de fila del ticket
-        int thisRowNumber = Integer.parseInt(this.ticket.substring(1));
-        int otherRowNumber = Integer.parseInt(other.ticket.substring(1));
-        int rowNumberComparison = Integer.compare(thisRowNumber, otherRowNumber);
-        if (rowNumberComparison != 0) {
-            return rowNumberComparison;
-        }
-
-        // Si las filas son iguales, comparamos por la letra de la columna del ticket
-        String thisColumn = this.ticket.split("")[0];
-        String otherColumn = other.ticket.split("")[0];
-        int columnComparison = thisColumn.compareTo(otherColumn);
-        if (columnComparison != 0) {
-            return columnComparison;
-        }
-
-        return 0;
 
     }
 
-    public int getTotalPriority() {
-        return miles_earned + special_attention + elderly + number_of_suitcases + membership_level + medical_care;
+    public double getTotalPriority() {
+        return this.total_priority;
     }
 
     @Override
@@ -177,7 +120,9 @@ public class Passenger implements Comparable<Passenger> {
         if(first_class == 1) {
             return
                     "cedula=" + cedula +
-                    ", ticket='" + ticket + '\''; /*+
+                    ", ticket='" + ticket +
+                            ", Total prioridad='" + this.total_priority +
+                            ", arrival_time='" + getArrival_time() + '\''; /*+
                     ", first_class=" + first_class +
                     ", arrival_time='" + getArrival_time() + '\'' +
                     ", miles_earned=" + miles_earned +
@@ -191,6 +136,7 @@ public class Passenger implements Comparable<Passenger> {
             return
                     "cedula=" + cedula +
                     ", ticket='" + ticket + '\'' +
+                            ", Total prioridad='" + this.total_priority +
                     ", first_class=" + getArrival_time() ;
         }
 
