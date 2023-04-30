@@ -72,13 +72,11 @@ public class Main{
         }
 
         //Crear arrgelo para ordenar por primera clase
-        //ct.orderFirstClass();
+        ct.orderFirstClass();
+        ct.orderStandard();
 
         //Crear arreglo y ordenar los demas cupos
-        ct.orderForArrivalTime();
-        System.out.println(" ");
-        ct.orderFirstClass();
-        reader.close();
+        ct.printOrderInput();
 
         //ct.printTable();
 /*

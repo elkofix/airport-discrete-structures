@@ -38,7 +38,7 @@ public class Controller{
 
     }
 
-    public void orderForArrivalTime(){
+    public void orderStandard(){
         for (Map<Long, People> bucket : table.getTable()) {
             for (Map.Entry<Long, People> entry : bucket.entrySet()) {
                 Long key = entry.getKey();
@@ -48,10 +48,6 @@ public class Controller{
                     queueForArrivalTime.insert(new Passenger(value));
                 }
             }
-        }
-
-        while (!queueForArrivalTime.isEmpty()) {
-            System.out.println(queueForArrivalTime.remove());
         }
 
     }
@@ -68,8 +64,17 @@ public class Controller{
             }
         }
 
+    }
+
+    public void printOrderInput(){
+        System.out.println("Pasajeros de Primera Clase: ");
         while (!queueFirstClass.isEmpty()) {
             System.out.println(queueFirstClass.remove());
+        }
+        System.out.println(" ");
+        System.out.println("Pasajeros Standard: ");
+        while (!queueForArrivalTime.isEmpty()) {
+            System.out.println(queueForArrivalTime.remove());
         }
     }
 }
