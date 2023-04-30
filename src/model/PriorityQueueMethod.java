@@ -50,6 +50,11 @@ public class PriorityQueueMethod<T extends Comparable<T>> {
         return heap.size();
     }
 
+    public T get(int i){
+
+        return heap.get(i);
+    }
+
     public boolean isEmpty() {
         return heap.isEmpty();
     }
@@ -89,5 +94,15 @@ public class PriorityQueueMethod<T extends Comparable<T>> {
 
     private int rightChildIndex(int i) {
         return 2 * i + 2;
+    }
+
+    public void printQueue() {
+        PriorityQueueMethod<T> tempQueue = new PriorityQueueMethod<T>();
+        while (!isEmpty()) {
+            T item = remove();
+            System.out.println(item);
+            tempQueue.insert(item);
+        }
+        heap = tempQueue.heap;
     }
 }

@@ -141,17 +141,24 @@ public class People {
 
     @Override
     public String toString() {
-        return "People{" +
-                "cedula=" + cedula +
-                ", ticket='" + ticket + '\'' +
-                ", first_class=" + first_class +
-                ", arrival_time='" + arrival_time + '\'' +
-                ", miles_earned=" + miles_earned +
-                ", special_attention=" + special_attention +
-                ", elderly=" + elderly +
-                ", number_of_suitcases=" + number_of_suitcases +
-                ", membership_level=" + membership_level +
-                ", medical_care=" + medical_care +
-                '}';
+        if(first_class == 1) {
+            return "People{" +
+                    "cedula=" + cedula +
+                    ", ticket='" + ticket + '\'' + '}'; /*+
+                    ", first_class=" + first_class +
+                    ", arrival_time='" + arrival_time + '\'' +
+                    ", miles_earned=" + miles_earned +
+                    ", special_attention=" + special_attention +
+                    ", elderly=" + elderly +
+                    ", number_of_suitcases=" + number_of_suitcases +
+                    ", membership_level=" + membership_level +
+                    ", medical_care=" + medical_care +*/
+
+        }else{
+            return "People{" +
+                    "cedula=" + cedula +
+                    ", ticket='" + ticket + '\'' +
+                    ", first_class=" + first_class + "}";
+        }
     }
 }

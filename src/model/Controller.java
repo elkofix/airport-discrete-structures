@@ -69,15 +69,13 @@ public class Controller{
     public void printOrderInput(){
         System.out.println("Orden de entrada................ ");
         System.out.println("Pasajeros de Primera Clase: ");
-        while (!queueFirstClass.isEmpty()) {
-            Passenger element = queueFirstClass.remove();
-            System.out.println("Cedula: " + element.getCedula() + ", Ticket: " + element.getTicket());
-        }
+
+        queueFirstClass.printQueue();
+
         System.out.println(" ");
         System.out.println("Pasajeros Standard: ");
-        while (!queueForArrivalTime.isEmpty()) {
-            Passenger element = queueForArrivalTime.remove();
-            System.out.println("Cedula: " + element.getCedula() + ", Ticket: " + element.getTicket() + ", Hora de llegada: " + element.getArrival_time());
-        }
+
+        queueForArrivalTime.printQueue();
+
     }
 }

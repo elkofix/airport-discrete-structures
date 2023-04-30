@@ -71,10 +71,27 @@ public class Main{
 
         //Crear arrgelo para ordenar por primera clase
         ct.orderFirstClass();
+
+        //Crear arreglo par ordenar los usuarios standard
         ct.orderStandard();
 
-        //Crear arreglo y ordenar los demas cupos
-        ct.printOrderInput();
+        while (true){
+            System.out.println("[1] Ver orden de entrada: ");
+            System.out.println("[2] Ver orden de salida: ");
+            System.out.println("[0] Salir: \n");
+            int option = Integer.parseInt(reader.readLine().trim());
+
+            if(option == 1){
+                ct.printOrderInput();
+                System.out.println("\n");
+            }else if(option == 2){
+                System.out.println("Orden de salida:\n");
+            }else{
+                System.out.println("Saliendo... \n");
+                break;
+            }
+
+        }
 
         //ct.printTable();
 /*
