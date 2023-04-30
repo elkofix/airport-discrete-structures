@@ -6,7 +6,7 @@ import java.util.*;
 
 import model.*;
 
-import java.time.LocalTime;
+
 
 
 public class Main{
@@ -64,9 +64,7 @@ public class Main{
         //Asignar hora de llegada
         for(int i = 0; i < n; i++){
             cedula = Integer.parseInt(reader.readLine().trim());
-            String horaString = reader.readLine().trim();
-            LocalTime hora = LocalTime.parse(horaString);
-            int arrival_time = hora.toSecondOfDay();
+            String arrival_time = reader.readLine().trim();
 
             ct.setArrivalTimeTableHash(cedula, arrival_time);
         }

@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalTime;
 public class Passenger implements Comparable<Passenger> {
 
 
@@ -8,7 +9,7 @@ public class Passenger implements Comparable<Passenger> {
     //Es primera clase?
     private int first_class;
 
-    private int arrival_time;
+    private String arrival_time;
     private int miles_earned;
     private int special_attention;
     private int elderly;
@@ -30,11 +31,27 @@ public class Passenger implements Comparable<Passenger> {
         this.ticket = people.getTicket();
     }
 
-    public float getArrival_time() {
+    public long getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(long cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public String getArrival_time() {
         return arrival_time;
     }
 
-    public void setArrival_time(int arrival_time) {
+    public void setArrival_time(String arrival_time) {
         this.arrival_time = arrival_time;
     }
 
@@ -111,7 +128,14 @@ public class Passenger implements Comparable<Passenger> {
         }
 
         //Comparar por tiempo
-        result = Integer.compare(this.arrival_time, other.arrival_time);
+
+        LocalTime hour = LocalTime.parse(arrival_time);
+        int time = hour.toSecondOfDay();
+
+        LocalTime otherHour = LocalTime.parse(other.arrival_time);
+        int otherTime = otherHour.toSecondOfDay();
+
+        result = Integer.compare(time, otherTime);
         if (result != 0) {
             return result;
         }

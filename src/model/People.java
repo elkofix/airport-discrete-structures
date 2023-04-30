@@ -9,7 +9,7 @@ public class People {
     private int first_class;
 
     //Hora de llegada
-    private int arrival_time;
+    private String arrival_time;
 
     //Millas acumuladas
     private int miles_earned;
@@ -71,11 +71,11 @@ public class People {
         this.first_class = first_class;
     }
 
-    public int getArrival_time() {
+    public String getArrival_time() {
         return arrival_time;
     }
 
-    public void setArrival_time(int arrival_time) {
+    public void setArrival_time(String arrival_time) {
         this.arrival_time = arrival_time;
     }
 

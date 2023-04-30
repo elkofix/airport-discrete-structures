@@ -19,7 +19,7 @@ public class Controller{
         table.get(cedula).setFirstClassData(miles_earned, special_attention, elderly, number_of_suitcases, membership_level, medical_care);
     }
 
-    public void setArrivalTimeTableHash(long cedula, int arrival_time){
+    public void setArrivalTimeTableHash(long cedula, String arrival_time){
         table.get(cedula).setArrival_time(arrival_time);
     }
 
@@ -67,14 +67,17 @@ public class Controller{
     }
 
     public void printOrderInput(){
+        System.out.println("Orden de entrada................ ");
         System.out.println("Pasajeros de Primera Clase: ");
         while (!queueFirstClass.isEmpty()) {
-            System.out.println(queueFirstClass.remove());
+            Passenger element = queueFirstClass.remove();
+            System.out.println("Cedula: " + element.getCedula() + ", Ticket: " + element.getTicket());
         }
         System.out.println(" ");
         System.out.println("Pasajeros Standard: ");
         while (!queueForArrivalTime.isEmpty()) {
-            System.out.println(queueForArrivalTime.remove());
+            Passenger element = queueForArrivalTime.remove();
+            System.out.println("Cedula: " + element.getCedula() + ", Ticket: " + element.getTicket() + ", Hora de llegada: " + element.getArrival_time());
         }
     }
 }
