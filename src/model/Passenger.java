@@ -67,42 +67,47 @@ public class Passenger implements Comparable<Passenger> {
         int result;
 
         if(first_class == 1){
-
-            // Si las millas ganadas son iguales, comparamos por atención especial
-            result = Integer.compare(other.special_attention, this.special_attention);
-            if (result != 0) {
-                return result;
+            int milesComparison = Integer.compare(this.miles_earned, other.miles_earned);
+            if (milesComparison != 0) {
+                return milesComparison;
             }
 
-            // Si las millas ganadas son iguales, comparamos por atención especial
-            result = Integer.compare(other.special_attention, this.special_attention);
-            if (result != 0) {
-                return result;
+            // Luego comparamos por atención especial
+            int attentionComparison = Integer.compare(this.special_attention, other.special_attention);
+            if (attentionComparison != 0) {
+                return attentionComparison;
             }
 
-            // Si también la atención especial es igual, comparamos por edad
-            result = Integer.compare(other.elderly, this.elderly);
-            if (result != 0) {
-                return result;
+            // Luego comparamos por edad avanzada
+            int elderlyComparison = Integer.compare(this.elderly, other.elderly);
+            if (elderlyComparison != 0) {
+                return elderlyComparison;
             }
 
-            // Si también la edad es igual, comparamos por número de maletas
-            result = Integer.compare(this.number_of_suitcases, other.number_of_suitcases);
-            if (result != 0) {
-                return result;
+            // Luego comparamos por cantidad de maletas
+            int suitcaseComparison = Integer.compare(this.number_of_suitcases, other.number_of_suitcases);
+            if (suitcaseComparison != 0) {
+                return suitcaseComparison;
             }
 
-            // Si también el número de maletas es igual, comparamos por nivel de membresía
-            result = Integer.compare(this.membership_level, other.membership_level);
-            if (result != 0) {
-                return result;
+            // Luego comparamos por nivel de membresía
+            int membershipComparison = Integer.compare(this.membership_level, other.membership_level);
+            if (membershipComparison != 0) {
+                return membershipComparison;
             }
 
-            // Si también el nivel de membresía es igual, comparamos por cuidado médico
-            result = Integer.compare(other.medical_care, this.medical_care);
-            if (result != 0) {
-                return result;
+            // Luego comparamos por atención médica
+            int medicalComparison = Integer.compare(this.medical_care, other.medical_care);
+            if (medicalComparison != 0) {
+                return medicalComparison;
             }
+
+            // Finalmente comparamos por el ticket
+            int ticketComparison = this.ticket.compareTo(other.ticket);
+            if (ticketComparison != 0) {
+                return ticketComparison;
+            }
+
         }
 
         //Comparar por tiempo
