@@ -4,7 +4,10 @@ import java.io.*;
 
 import java.util.*;
 
-import model.Controller;
+import model.*;
+
+import java.time.LocalTime;
+
 
 public class Main{
     public static void main(String args[]) throws IOException {
@@ -58,7 +61,47 @@ public class Main{
 
         }
 
+        //Asignar hora de llegada
+        for(int i = 0; i < n; i++){
+            cedula = Integer.parseInt(reader.readLine().trim());
+            String horaString = reader.readLine().trim();
+            LocalTime hora = LocalTime.parse(horaString);
+            int arrival_time = hora.toSecondOfDay();
+
+            ct.setArrivalTimeTableHash(cedula, arrival_time);
+        }
+
+        //Crear arrgelo para ordenar por primera clase
+        //ct.orderFirstClass();
+
+        //Crear arreglo y ordenar los demas cupos
+        ct.orderForArrivalTime();
+        System.out.println(" ");
+        ct.orderFirstClass();
         reader.close();
-        ct.printTable();
+
+        //ct.printTable();
+/*
+            PriorityQueueMethod<Passenger> queue = new PriorityQueueMethod<Passenger>();
+
+        Passenger p1 = new Passenger(1000, 1, 0, 2, 3, 0);
+        Passenger p2 = new Passenger(1000, 1, 1, 1, 2, 1);
+        Passenger p3 = new Passenger(500, 1, 1, 3, 1, 0);
+        Passenger p5 = new Passenger(1500, 1, 1, 3, 1, 0);
+
+        Passenger p4 = new Passenger(2000, 1, 1, 3, 1, 0);
+
+            queue.insert(p1);
+            queue.insert(p2);
+            queue.insert(p3);
+
+        queue.insert(p5);
+        queue.insert(p4);
+
+        while (!queue.isEmpty()) {
+            System.out.println(queue.remove());
+        }*/
+
+
     }
 }

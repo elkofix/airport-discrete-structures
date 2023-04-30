@@ -9,7 +9,7 @@ public class People {
     private int first_class;
 
     //Hora de llegada
-    private String arrival_time;
+    private int arrival_time;
 
     //Millas acumuladas
     private int miles_earned;
@@ -71,11 +71,11 @@ public class People {
         this.first_class = first_class;
     }
 
-    public String getArrival_time() {
+    public int getArrival_time() {
         return arrival_time;
     }
 
-    public void setArrival_time(String arrival_time) {
+    public void setArrival_time(int arrival_time) {
         this.arrival_time = arrival_time;
     }
 
@@ -125,5 +125,33 @@ public class People {
 
     public void setMedical_care(int medical_care) {
         this.medical_care = medical_care;
+    }
+
+    public int getSpecial_attention() {
+        return special_attention;
+    }
+
+    public int getElderly() {
+        return elderly;
+    }
+
+    public int getMedical_care() {
+        return medical_care;
+    }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "cedula=" + cedula +
+                ", ticket='" + ticket + '\'' +
+                ", first_class=" + first_class +
+                ", arrival_time='" + arrival_time + '\'' +
+                ", miles_earned=" + miles_earned +
+                ", special_attention=" + special_attention +
+                ", elderly=" + elderly +
+                ", number_of_suitcases=" + number_of_suitcases +
+                ", membership_level=" + membership_level +
+                ", medical_care=" + medical_care +
+                '}';
     }
 }
