@@ -86,6 +86,7 @@ public class Main{
                 System.out.println("\n");
             }else if(option == 2){
                 System.out.println("Orden de salida:\n");
+                ct.getSortingOutput();
             }else{
                 System.out.println("Saliendo... \n");
                 break;

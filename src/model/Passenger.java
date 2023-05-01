@@ -6,6 +6,8 @@ public class Passenger implements Comparable<Passenger> {
     private long cedula;
     private String ticket;
 
+    private int section;
+
     //Es primera clase?
     private int first_class;
 
@@ -17,6 +19,8 @@ public class Passenger implements Comparable<Passenger> {
     private int membership_level;
     private int medical_care;
     private double total_priority;
+
+    private double time;
 
     public Passenger(People people) {
         this.cedula = people.getCedula();
@@ -30,6 +34,26 @@ public class Passenger implements Comparable<Passenger> {
         this.membership_level = people.getMembership_level();
         this.medical_care = people.getMedical_care();
         this.ticket = people.getTicket();
+
+        LocalTime hour = LocalTime.parse(arrival_time);
+        double time = ((double) 1000 / hour.toSecondOfDay());
+
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
     }
 
     public long getCedula() {
@@ -83,7 +107,7 @@ public class Passenger implements Comparable<Passenger> {
     @Override
     public int compareTo(Passenger other) {
 
-        int section_ticket = Integer.parseInt(this.ticket.substring(1));
+        this.section = (Integer.parseInt(this.ticket.substring(1)));
 
         int other_section_ticket = Integer.parseInt(other.ticket.substring(1));
         //Comparar por tiempo
@@ -96,9 +120,9 @@ public class Passenger implements Comparable<Passenger> {
         double otherTime = ((double) 1000 / otherHour.toSecondOfDay());
 
 
-        this.total_priority =  (time*1000) + (section_ticket * 2000) + (this.first_class * 1000) + (this.miles_earned * 10) + (this.special_attention * 1000) + (this.elderly * 1000) + (this.number_of_suitcases * 5) + (this.membership_level * 500) + (this.medical_care * 1000);
+        this.total_priority =  (time*1000) + (this.section * 2000) + (this.first_class * 100000) + (this.miles_earned * 10) + (this.special_attention * 1000) + (this.elderly * 1000) + (this.number_of_suitcases * 5) + (this.membership_level * 500) + (this.medical_care * 1000);
 
-        double otherTotalPriority = (otherTime*1000) + (other_section_ticket * 2000) + (other.first_class * 1000) + (other.miles_earned * 10) + (other.special_attention * 1000) + (other.elderly * 1000) + (other.number_of_suitcases * 5) + (other.membership_level * 500) + (other.medical_care * 1000);
+        double otherTotalPriority = (otherTime*1000) + (other_section_ticket * 2000) + (other.first_class * 100000) + (other.miles_earned * 10) + (other.special_attention * 1000) + (other.elderly * 1000) + (other.number_of_suitcases * 5) + (other.membership_level * 500) + (other.medical_care * 1000);
 
 
         int totalPriorityComparison = Double.compare(this.total_priority, otherTotalPriority);
@@ -122,6 +146,7 @@ public class Passenger implements Comparable<Passenger> {
                     "cedula=" + cedula +
                     ", ticket='" + ticket +
                             ", Total prioridad='" + this.total_priority +
+                            ", first_class=" + first_class +
                             ", arrival_time='" + getArrival_time() + '\''; /*+
                     ", first_class=" + first_class +
                     ", arrival_time='" + getArrival_time() + '\'' +
@@ -137,7 +162,8 @@ public class Passenger implements Comparable<Passenger> {
                     "cedula=" + cedula +
                     ", ticket='" + ticket + '\'' +
                             ", Total prioridad='" + this.total_priority +
-                    ", first_class=" + getArrival_time() ;
+                            ", first_class=" + first_class +
+                    ", arrival_time=" + getArrival_time() ;
         }
 
     }
