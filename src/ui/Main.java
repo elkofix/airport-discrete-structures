@@ -25,7 +25,7 @@ public class Main{
 
 
         //Casos de prueba
-        FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\dataPeople.txt");
+        FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\test2.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         int n = Integer.parseInt(reader.readLine().trim());
 
