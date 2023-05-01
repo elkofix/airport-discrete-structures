@@ -5,6 +5,8 @@ import java.util.*;
 public class Controller{
 
     // Crear una tabla hash con un tamaño de 10
+    public static Double hallway = 0.0;
+    public static int state = 0;
     private HashTable<Long, People> table = new HashTable<>(10);
     private PriorityQueueMethod<Passenger> queueFirstClass = new PriorityQueueMethod<Passenger>();
 
@@ -75,7 +77,7 @@ public class Controller{
 
     public void getSortingOutput(){
         PriorityQueueMethod<Passenger> sectionTemp = new PriorityQueueMethod<Passenger>();
-
+        state=2;
         //Obtener la maxima seccion
         int maxSection = 0; // Inicializar la variable con un valor que sea menor que cualquier sección posible en la lista
 
@@ -135,7 +137,7 @@ public class Controller{
         }
 
         queueOutput.printQueue();
-
+        state = 0;
     }
 
     public void printOrderInput(){

@@ -119,7 +119,6 @@ public class Passenger implements Comparable<Passenger> {
 
     @Override
     public int compareTo(Passenger other) {
-
         this.section = (Integer.parseInt(this.ticket.substring(1)));
 
         int other_section_ticket = Integer.parseInt(other.ticket.substring(1));
@@ -131,19 +130,39 @@ public class Passenger implements Comparable<Passenger> {
 
         LocalTime otherHour = LocalTime.parse(other.arrival_time);
         double otherTime = ((double) 1000 / otherHour.toSecondOfDay());
+        if(Controller.state==0){
+
+            this.total_priority =  (time*1000) + (this.section * 2000) + (this.first_class * 100000) + (this.miles_earned * 10) + (this.special_attention * 1000) + (this.elderly * 1000) + (this.number_of_suitcases * 5) + (this.membership_level * 500) + (this.medical_care * 1000);
+
+            double otherTotalPriority = (otherTime*1000) + (other_section_ticket * 2000) + (other.first_class * 100000) + (other.miles_earned * 10) + (other.special_attention * 1000) + (other.elderly * 1000) + (other.number_of_suitcases * 5) + (other.membership_level * 500) + (other.medical_care * 1000);
 
 
-        this.total_priority =  (time*1000) + (this.section * 2000) + (this.first_class * 100000) + (this.miles_earned * 10) + (this.special_attention * 1000) + (this.elderly * 1000) + (this.number_of_suitcases * 5) + (this.membership_level * 500) + (this.medical_care * 1000);
+            int totalPriorityComparison = Double.compare(this.total_priority, otherTotalPriority);
 
-        double otherTotalPriority = (otherTime*1000) + (other_section_ticket * 2000) + (other.first_class * 100000) + (other.miles_earned * 10) + (other.special_attention * 1000) + (other.elderly * 1000) + (other.number_of_suitcases * 5) + (other.membership_level * 500) + (other.medical_care * 1000);
+            if (totalPriorityComparison != 0) {
+                return totalPriorityComparison;
+            }else {
+                return 0;
+            }
+        }else{
+            double section_seat = (double) (Integer.parseInt(this.ticket.substring(2)));
 
+            double other_section_seat= (double) Integer.parseInt(other.ticket.substring(2));
+            if(this.total_priority==2400.0){
+                System.out.println(100/Math.abs(Controller.hallway-section_seat));
+            }
+            this.total_priority = (double) (1000/this.section)*100;
+            this.total_priority += (double) 100/Math.abs(Controller.hallway-section_seat);
 
-        int totalPriorityComparison = Double.compare(this.total_priority, otherTotalPriority);
+            double otherTotalPriority = (double)(1000/other_section_ticket)*100;
+            otherTotalPriority+= (double) 100/Math.abs(Controller.hallway-other_section_seat);
+            int totalPriorityComparison = Double.compare(this.total_priority, otherTotalPriority);
 
-        if (totalPriorityComparison != 0) {
-            return totalPriorityComparison;
-        }else {
-            return 0;
+            if (totalPriorityComparison == 0) {
+                return totalPriorityComparison+Double.compare(this.time, otherTime);
+            }else {
+                return totalPriorityComparison;
+            }
         }
 
     }

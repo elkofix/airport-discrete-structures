@@ -27,6 +27,7 @@ public class Main{
         //Casos de prueba
         FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\dataPeople.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        Controller.hallway = (double)Integer.parseInt(reader.readLine().trim())+0.5;
         int n = Integer.parseInt(reader.readLine().trim());
 
         for(int i = 0; i < n; i++) {
@@ -93,29 +94,6 @@ public class Main{
             }
 
         }
-
-        //ct.printTable();
-/*
-            PriorityQueueMethod<Passenger> queue = new PriorityQueueMethod<Passenger>();
-
-        Passenger p1 = new Passenger(1000, 1, 0, 2, 3, 0);
-        Passenger p2 = new Passenger(1000, 1, 1, 1, 2, 1);
-        Passenger p3 = new Passenger(500, 1, 1, 3, 1, 0);
-        Passenger p5 = new Passenger(1500, 1, 1, 3, 1, 0);
-
-        Passenger p4 = new Passenger(2000, 1, 1, 3, 1, 0);
-
-            queue.insert(p1);
-            queue.insert(p2);
-            queue.insert(p3);
-
-        queue.insert(p5);
-        queue.insert(p4);
-
-        while (!queue.isEmpty()) {
-            System.out.println(queue.remove());
-        }*/
-
 
     }
 }
