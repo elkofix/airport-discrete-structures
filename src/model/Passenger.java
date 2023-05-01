@@ -56,6 +56,19 @@ public class Passenger implements Comparable<Passenger> {
         this.section = section;
     }
 
+    public Passenger(long cedula, String ticket, int first_class, String arrival_time, int miles_earned, int special_attention, int elderly, int number_of_suitcases, int  membership_level, int medical_care) {
+        this.cedula = cedula;
+        this.ticket = ticket;
+        this.first_class = first_class;
+        this.arrival_time = arrival_time;
+        this.miles_earned = miles_earned;
+        this.special_attention = special_attention;
+        this.elderly = elderly;
+        this.number_of_suitcases = number_of_suitcases;
+        this.membership_level = membership_level;
+        this.medical_care = medical_care;
+    }
+
     public long getCedula() {
         return cedula;
     }
