@@ -148,14 +148,11 @@ public class Passenger implements Comparable<Passenger> {
             double section_seat = (double) (Integer.parseInt(this.ticket.substring(2)));
 
             double other_section_seat= (double) Integer.parseInt(other.ticket.substring(2));
-            if(this.total_priority==2400.0){
-                System.out.println(100/Math.abs(Controller.hallway-section_seat));
-            }
             this.total_priority = (double) (1000/this.section)*100;
-            this.total_priority += (double) 100/Math.abs(Controller.hallway-section_seat);
+            total_priority += 100/Math.abs(Controller.hallway-section_seat);
 
             double otherTotalPriority = (double)(1000/other_section_ticket)*100;
-            otherTotalPriority+= (double) 100/Math.abs(Controller.hallway-other_section_seat);
+            otherTotalPriority+=  100/Math.abs(Controller.hallway-other_section_seat);
             int totalPriorityComparison = Double.compare(this.total_priority, otherTotalPriority);
 
             if (totalPriorityComparison == 0) {

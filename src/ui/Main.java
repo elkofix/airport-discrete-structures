@@ -25,7 +25,7 @@ public class Main{
 
 
         //Casos de prueba
-        FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\test2.txt");
+        FileInputStream inputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\dataPeople.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         Controller.hallway = (double)Integer.parseInt(reader.readLine().trim())+0.5;
         int n = Integer.parseInt(reader.readLine().trim());
@@ -70,7 +70,7 @@ public class Main{
             ct.setArrivalTimeTableHash(cedula, arrival_time);
         }
 
-        //Crear arrgelo para ordenar por primera clase
+        //Crear arreglo para ordenar por primera clase
         ct.orderFirstClass();
 
         //Crear arreglo par ordenar los usuarios standard
