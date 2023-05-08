@@ -2,4 +2,4 @@
 ## Members
 - Alejandro Cordoba Erazo - A00395678
 - Santiago Castillo - A00395559
-- Miguel Angel Castillo - A00396327
+- Miguel Angel Martinez - A00396327
